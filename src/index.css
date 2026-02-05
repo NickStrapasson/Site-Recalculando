@@ -443,3 +443,169 @@ label small {
 .suggestions-list li:last-child {
     border-bottom: none;
 }
+
+/* --- LAYOUT DO PLAYER (ESTILO YOUTUBE) --- */
+
+.player-layout {
+    background-color: #f9f9f9;
+    min-height: 100vh;
+    padding-top: 70px; /* Espaço para navbar fixa se houver */
+}
+
+/* Header simples específico do player */
+.player-header {
+    display: none; /* Se você já usa a Navbar global, pode esconder este ou usar ele como sub-header */
+}
+
+/* O GRID PRINCIPAL */
+.main-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 400px; /* Vídeo ocupa o resto, Sidebar fixa 400px */
+    gap: 24px;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+/* ÁREA DE VÍDEO */
+.video-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Mantém formato wide */
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.video-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background: linear-gradient(45deg, #1a1a1a, #2c3e50);
+}
+
+.play-button {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.play-button:hover { transform: scale(1.1); }
+
+.video-info h1 {
+    font-size: 1.5rem;
+    margin: 20px 0 10px 0;
+    color: #1a1a1a;
+}
+
+.video-actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 15px;
+}
+
+.btn-action {
+    background: #f0f0f0;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-action:hover { background: #e0e0e0; }
+
+.description-box {
+    background: #fff;
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* SIDEBAR (PLAYLIST) */
+.playlist-sidebar {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    height: fit-content;
+    max-height: calc(100vh - 100px); /* Não deixa passar da tela */
+    overflow-y: auto; /* Scroll interno se for muito grande */
+}
+
+.playlist-sidebar h3 {
+    padding: 15px 20px;
+    margin: 0;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 1.1rem;
+}
+
+.module-header {
+    padding: 15px 20px;
+    background: #f8f8f8;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+.module-header:hover { background: #f0f0f0; }
+.module-header.active { background: #e3f2fd; color: var(--primary); }
+
+.lesson-item {
+    display: flex;
+    gap: 10px;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-bottom: 1px solid #f9f9f9;
+    transition: 0.2s;
+}
+
+.lesson-item:hover { background-color: #f5f5f5; }
+
+.lesson-item.playing {
+    background-color: #f0f4c3; /* Um destaque suave (amarelo claro ou azul) */
+    border-left: 4px solid var(--accent);
+}
+
+.lesson-status {
+    color: var(--gray);
+    font-size: 0.8rem;
+    margin-top: 2px;
+}
+
+.lesson-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.lesson-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.lesson-duration {
+    font-size: 0.75rem;
+    color: #888;
+}
+
+/* RESPONSIVO */
+@media (max-width: 1024px) {
+    .main-content-grid {
+        grid-template-columns: 1fr; /* Vira uma coluna só */
+    }
+    .video-wrapper {
+        aspect-ratio: 16 / 9;
+    }
+    .playlist-sidebar {
+        max-height: none; /* Deixa crescer */
+    }
+}
